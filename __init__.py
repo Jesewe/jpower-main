@@ -1,24 +1,21 @@
-def error1():
-	print('Ошибка 1 : проблемма в коде программы!')
-def error2():
-	print('Ошибка 2 : неизвестная ошибка!')
-def error3():
-	print('Ошибка 3 : не удалось получить доступ к серверу!')
-def error4():
-	print('Ошибка 4 : ничего не найдено!')
-def error5():
-	print('Ошибка 5 : отказано в доступе!')
-def error6():
-	print('Ошибка 6 : превышено время ожидания!')
-def error7():
-	print('Ошибка 7 : доступ заблокирован!')
-def error8():
-	print('Ошибка 8 : процесс не найден!')
-def error9():
-	print('Ошибка 9 : нету подключения к интернету!')
-def error10():
-	print('Ошибка 10 : модуль не найден!')
-def error11():
-	print('Ошибка 11 : не верная команда!')
+import ctypes
+import webbrowser
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
 
-_version_ = '1.0'
+kernel32 = ctypes.windll.kernel32
+kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+
+# Functions
+def window_title(title):
+	ctypes.windll.kernel32.SetConsoleTitleW(title)
+def url_open(title):
+	webbrowser.open(title)
+def msgbox(title, text, style):
+    return ctypes.windll.user32.MessageBoxW(0, text, title, style)
+
+# Information about Module #
+__version__ = '1.1'
+__author__ = 'Jesewe'
+__description__ = 'Jpower - module for python.\nIt adds some commands with errors, and notification.\n© 2022 JeseweHack.'
